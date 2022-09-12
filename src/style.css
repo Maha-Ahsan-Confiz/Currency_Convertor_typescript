@@ -1,0 +1,37 @@
+body {
+    background-color: #85972a;
+    color: #ddd;
+    padding: 50px;
+}
+
+h1 {
+
+    color: rgb(31, 31, 178);
+    text-align: center;
+    text-decoration: underline;
+}
+
+.Curr {
+    /* background:#335; */
+    text-align: center;
+    margin: 0 auto 20px;
+    /* display: grid;
+    grid-template-columns:100px 80px;
+    border-radius: 15px; */
+}
+
+input,
+select {
+    background: none;
+    border: 0;
+    color: rgb(97, 194, 67);
+    text-emphasis: bold;
+}
+
+input {
+    padding-left: 10px;
+}
+
+select {
+    padding: 15px;
+}
