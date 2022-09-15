@@ -13,14 +13,14 @@ function App() {
   const [amount2,setAmount2]=useState(1);
   const [currency1,setCurrency1]=useState('USD');
   const [currency2,setCurrency2]=useState('PKR');
-  const [rates,setRates]=useState<{[key:string]:string}>();
-
+  const [rates,setRates]=useState<{[key:string]:string}>({});
+  
 
   const { loading, data } = ApiCurrency()
   console.log("Fetching data from api=",data,loading)
 
   useEffect(()=>{
-     if (loading !='true' && data!=null){
+     if (loading !=true && data!=null){
       // console.log("In func",data)
       setRates(data.rates)
      }
@@ -33,26 +33,26 @@ useEffect(() => {
 },[rates])
 console.log("Rates=",rates)
 
-function format(number:any){
-  return number.toFixed(4);
+function format(number:number){
+  return +number.toFixed(4);
 }
-function handleAmount1Change(amount1:any){
-  setAmount2(format(amount1*rates[currency2]/rates[currency1]));
-  setAmount1(amount1);
+function handleAmount1Change(amount1:number){
+  setAmount2(format(amount1*+rates[currency2]/+rates[currency1]));
+  setAmount1(+amount1);
 }
 
 function handleCurrency1Change(currency1:any){
-  setAmount2(format(amount1*rates[currency2]/rates[currency1]));
+  setAmount2(format(amount1*+rates[currency2]/+rates[currency1]));
   setCurrency1(currency1);
 }
 
 function handleAmount2Change(amount2:any){
-  setAmount1(format(amount2*rates[currency1]/rates[currency2]));
+  setAmount1(format(+amount2*+rates[currency1]/+rates[currency2]));
   setAmount2(amount2);
 }
 
 function handleCurrency2Change(currency2:any){
-  setAmount1(format(amount2*rates[currency1]/rates[currency2]));
+  setAmount1(format(amount2*+rates[currency1]/+rates[currency2]));
   setCurrency2(currency2);
 }
   return (
